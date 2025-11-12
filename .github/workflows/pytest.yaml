@@ -79,6 +79,10 @@ jobs:
         run: |
           winget install --accept-source-agreements BurntSushi.ripgrep.MSVC
 
+      - name: Check Ripgrep
+        run: |
+          rg --version
+
       - name: Execute pytest
         run: |
           pytest
