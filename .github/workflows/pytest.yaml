@@ -129,3 +129,4 @@ jobs:
           coverageFile: coverage.xml
           token: ${{ secrets.GITHUB_TOKEN }}
           sourceDir: tagstudio/src
+
