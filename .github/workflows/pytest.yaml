@@ -77,7 +77,7 @@ jobs:
 
       - name: Install system dependencies
         run: |
-          winget install --accept-source-agreements --verbose BurntSushi.ripgrep.MSVC
+          winget install --location . --accept-source-agreements BurntSushi.ripgrep.MSVC
 
       - name: Check Ripgrep
         run: |
