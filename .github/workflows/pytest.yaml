@@ -75,6 +75,10 @@ jobs:
           python -m pip install --upgrade uv
           uv pip install --system .[pytest]
 
+      - name: Install system dependencies
+        run: |
+          winget install BurntSushi.ripgrep.MSVC
+
       - name: Execute pytest
         run: |
           pytest
