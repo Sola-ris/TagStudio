@@ -3,9 +3,13 @@ name: pytest
 
 on: [push, pull_request]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  pytest:
-    name: Run pytest
+  pytest-linux:
+    name: Run pytest (Linux)
     runs-on: ubuntu-24.04
 
     steps:
@@ -51,6 +55,29 @@ jobs:
         with:
           name: coverage
           path: coverage.xml
+
+  pytest-windows:
+    name: Run pytest (Windows)
+    runs-on: windows-2025
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade uv
+          uv pip install --system .[pytest]
+
+      - name: Execute pytest
+        run: |
+          pytest
 
   coverage:
     name: Check coverage
