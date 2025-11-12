@@ -82,7 +82,7 @@ jobs:
 
       - name: Check Ripgrep
         run: |
-          rg --version
+          rg
 
       - name: Execute pytest
         run: |
