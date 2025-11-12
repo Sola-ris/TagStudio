@@ -77,7 +77,7 @@ jobs:
 
       - name: Install system dependencies
         run: |
-          winget install --accept-source-agreements BurntSushi.ripgrep.MSVC && \
+          winget install --accept-source-agreements BurntSushi.ripgrep.MSVC
           $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 
       - name: Check Ripgrep
