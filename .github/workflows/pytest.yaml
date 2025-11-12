@@ -3,9 +3,6 @@ name: pytest
 
 on: [push, pull_request]
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-
 jobs:
   pytest-linux:
     name: Run pytest (Linux)
