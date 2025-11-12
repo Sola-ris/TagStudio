@@ -9,19 +9,10 @@ jobs:
     runs-on: ubuntu-24.04
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Setup Workspace
+        uses: ./.github/actions/setup-workspace
         with:
-          python-version: '3.12'
-          cache: pip
-
-      - name: Install Python dependencies
-        run: |
-          python -m pip install --upgrade uv
-          uv pip install --system .[pytest]
+          dependency-group: pytest
 
       - name: Install system dependencies
         run: |
@@ -57,19 +48,10 @@ jobs:
     runs-on: windows-2025
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Setup Workspace
+        uses: ./.github/actions/setup-workspace
         with:
-          python-version: '3.12'
-          cache: pip
-
-      - name: Install Python dependencies
-        run: |
-          python -m pip install --upgrade uv
-          uv pip install --system .[pytest]
+          dependency-group: pytest
 
       - name: Install system dependencies
         run: |
@@ -84,19 +66,10 @@ jobs:
     runs-on: macos-15
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Setup Workspace
+        uses: ./.github/actions/setup-workspace
         with:
-          python-version: '3.12'
-          cache: pip
-
-      - name: Install Python dependencies
-        run: |
-          python -m pip install --upgrade uv
-          uv pip install --system .[pytest]
+          dependency-group: pytest
 
       - name: Install system dependencies
         run: |
