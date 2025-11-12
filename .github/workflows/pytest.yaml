@@ -79,9 +79,32 @@ jobs:
         run: |
           choco install ripgrep
 
-      - name: Check Ripgrep
+      - name: Execute pytest
         run: |
-          rg --version
+          pytest
+
+  pytest-macos:
+    name: Run pytest (MacOS)
+    runs-on: macos-15
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade uv
+          uv pip install --system .[pytest]
+
+      - name: Install system dependencies
+        run: |
+          brew install ripgrep
 
       - name: Execute pytest
         run: |
