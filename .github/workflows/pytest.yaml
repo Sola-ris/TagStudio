@@ -77,12 +77,11 @@ jobs:
 
       - name: Install system dependencies
         run: |
-          winget upgrade --accept-source-agreements --disable-interactivity winget
-          winget install --accept-source-agreements --disable-interactivity -e BurntSushi.ripgrep.MSVC 
+          $ choco install ripgrep
 
       - name: Check Ripgrep
         run: |
-          rg
+          rg --version
 
       - name: Execute pytest
         run: |
